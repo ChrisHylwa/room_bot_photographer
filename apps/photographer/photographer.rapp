@@ -1,0 +1,8 @@
+display: Photographer
+
+description: Turtlebot photographer app for room_bot / room_tourist
+
+compatibility: rocon:/
+launch: photographer.launch
+public_interface: photographer.interface
+public_parameters: photographer.parameters
