@@ -1,5 +1,5 @@
 <launch>
-  <arg name="frequency" default="0.2" doc="frequency of publishing in Hz"/>
+  <arg name="frequency" default="2" doc="frequency of publishing in Hz"/>
   <arg name="topic_name" default="photographer" doc="remap the topic name by parameter"/>
   <arg name="turtle_path" default="./turtle_pictures/" doc="path to store pictures from turtlebot camera"/>
   <arg name="usb_path" default="./usb_pictures/" doc="path to store pictures from usb camera"/>
