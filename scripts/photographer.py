@@ -2,11 +2,15 @@
 
 import sys
 import rospy
+import cv2
 # import usb_cam
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 
+from os.path import expancuser, join
+
+# photographer.py
 
 # Code Modified from :
 # https://github.com/markwsilliman/turtlebot/blob/master/take_photo.py
@@ -30,7 +34,7 @@ class TurtlePhoto:
 		self.image_received = True
 		self.image = cv_image
 
-	def take_picture(self, image_title):
+	def take_picture(self, img_title):
 		if self.image_received:
 			cv2.imwrite(img_title, self.image)
 			return True
@@ -40,6 +44,7 @@ class TurtlePhoto:
 def photographer():
 	rospy.init_node('photographer', anonymous=True)
 	
+	pic_num = 1
 
 	turt_path = rospy.get_param('~turtle_path', './turtle_pictures/')
 	usb_path = rospy.get_param('~usb_path', './usb_pictures/')
@@ -47,6 +52,8 @@ def photographer():
 	topic_name = rospy.get_param('~topic_name', 'photographer')
 	img_title = rospy.get_param('~image_title', 'test_photo.jpg')
 	pub = rospy.Publisher(topic_name, Image, queue_size=10)
+
+	img_title = "%04d" % (pic_num,)
 
 	turt = TurtlePhoto()
 #	usb = USBPhoto()
@@ -56,6 +63,7 @@ def photographer():
 	while not rospy.is_shutdown():
 		if turt.take_picture(img_title):
 			rospy.loginfo('Saved image' + img_title + ' to ' + turt_path)
+			pic_num += 1
 #		elif usb.take_picture(img_title):
 #			rospy.loginfo('Saved image' + img_title + ' to ' + usb_path)
 		else:
