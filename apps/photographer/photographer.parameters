@@ -2,4 +2,4 @@ topic_name: photographer
 frequency: 0.2
 turtle_path: ./turtle_pictures/
 usb_path: ./usb_pictures/
-img_title: test_image.jpg
+img_title: turt_cam
