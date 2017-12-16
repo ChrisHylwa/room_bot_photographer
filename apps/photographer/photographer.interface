@@ -1,8 +1,0 @@
-publishers:
-    name: photographer
-    type: sensor_msgs/Image
-
-subscribers: []
-services: []
-action_clients: []
-action_servers: []
