@@ -1,0 +1,5 @@
+topic_name: photographer
+frequency: 2
+turtle_path: ./turtle_pictures/
+usb_path: ./usb_pictures/
+img_title: turt_cam

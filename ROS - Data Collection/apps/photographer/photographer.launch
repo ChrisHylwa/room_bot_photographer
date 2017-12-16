@@ -1,0 +1,14 @@
+<launch>
+  <arg name="frequency" default="2" doc="frequency of publishing in Hz"/>
+  <arg name="topic_name" default="photographer" doc="remap the topic name by parameter"/>
+  <arg name="turtle_path" default="./turtle_pictures/" doc="path to store pictures from turtlebot camera"/>
+  <arg name="usb_path" default="./usb_pictures/" doc="path to store pictures from usb camera"/>
+  <arg name="img_title" default="turt_cam" doc="name of image file"/>
+  <node name="photographer" pkg="room_tourist" type="photographer.py" required="true">
+    <param name="topic_name" value="$(arg topic_name)"/>
+    <param name="frequency" value="$(arg frequency)"/>
+    <param name="turtle_path" value="$(arg turtle_path)"/>
+    <param name="usb_path" value="$(arg usb_path)"/>
+    <param name="img_title" value="$(arg img_title)"/>
+  </node>
+</launch>
