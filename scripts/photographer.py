@@ -27,7 +27,7 @@ class TurtlePhoto:
 		self.image_sub = rospy.Subscriber(img_topic, Image, self.callback)
 
 
-	def callback(self, data, turt_path):
+	def callback(self, data):
 		# convert to OpenCV format
 		try:
 			cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
@@ -38,7 +38,7 @@ class TurtlePhoto:
 		self.image = cv_image
 
 
-	def take_picture(self, img_title, turt_path):
+	def take_picture(self, img_title):
 		if self.image_received:
 			cv2.imwrite(img_title, self.image)
 			return True
